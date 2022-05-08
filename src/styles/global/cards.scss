@@ -4,16 +4,22 @@
     justify-content: space-evenly;
     padding: 5px;
     width: 80%;
-    .slytherin{
+    .Slytherin{
         background: $color-slytherin;
     }
 
-    .ravenclaw{
+    .Ravenclaw{
         background: $color-ravenclaw;
     }
     
-    .hufflepuff{
+    .Hufflepuff{
         background: $color-hufflepuff;
+    }
+    .Gryffindor{
+        background: $color-gryffindor;
+    }
+    .house{
+        background-color: rgb(182, 187, 187);
     }
     .card {
         background-color: $color-white;
@@ -29,6 +35,7 @@
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
             img {
+                border-radius: 8rem;
                 width: 95px;
                 height: 96.31px;
             }
