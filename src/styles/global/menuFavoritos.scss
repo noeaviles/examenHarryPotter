@@ -1,0 +1,48 @@
+.menuFav{
+    /*display: flex;*/
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 290px;
+    height: 340px;
+    color: $color-white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color:$color-purple;
+    position:fixed;
+    z-index: -1;
+    bottom:0;
+    padding-bottom: 50px;
+    .item-fav{
+        max-width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        img{
+            max-width: 38px;
+        }
+        .btn-trash{
+            cursor: pointer;
+        }
+    }
+    hr{
+        background-color: $color-purpleDark;
+        border:1px solid $color-purpleDark;
+        width: 90%;
+        padding:0 10px;
+        align-self: center;
+    }
+}
+
+@include breakpoint(medium) {
+    .menuFav{
+        justify-content: flex-end;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        top:0;
+        padding-bottom: 0px;
+        width: 270px;
+    }
+}

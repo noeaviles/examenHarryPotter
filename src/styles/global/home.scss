@@ -1,0 +1,26 @@
+.home {
+    //justify-content: space-around;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width:100%;
+}
+
+
+@include breakpoint(medium) {
+      
+    .img-fondo {
+        background-image: url('../../assests/Background.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        min-height:722px;
+        background-color: $color-black;
+    }
+}
