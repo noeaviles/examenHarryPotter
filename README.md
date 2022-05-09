@@ -1,17 +1,17 @@
 # Prueba de Ingreso Front Developer Aeroméxico
 
 ## Instrucciones para levantar proyecto
-El proyecto fue creado con 
+El proyecto fue creado con:
 ### `Yarn create-app`
 
-Para correrlo se utiliza el comando
+Para correrlo se utiliza el comando:
 ### `npm start`
 
-Para levantar el JSON-SERVER se utiliza el comando
+Para levantar el JSON-SERVER se utiliza el comando:
 ### `npm run harry-api`
 el archivo se llama db.json y está ubicado en la carpeta api 
 
-Para correr las pruebas unitarias se utiliza el comando
+Para correr las pruebas unitarias se utiliza el comando:
 ### `npm run test`
 
 Visualizar el proyecto en Netlify:
@@ -21,8 +21,7 @@ https://62792991e2023f000952e172--snazzy-puppy-0a04e3.netlify.app/
 El proyecto me gusto fue un buen reto, me di cuenta que, aunque parece sencillo es una aplicación donde me hizo aplicar diferentes técnicas de programación y también propiedades para maquetar.
 
 
-## Si hubieras tenido más tiempo ¿qué hubieras mejorado o qué más hubieras
-hecho?
+## Si hubieras tenido más tiempo ¿qué hubieras mejorado o qué más hubieras hecho?
 Me hubiese gustado realizar  más  validaciones al formulario, agregar la opción para elegir una casa de Hogwarts, también mostrar mensajes de éxito cuando se agrega un nuevo personaje  y mejorar visualmente el mensaje de fallo de conexión.
 
 ## Describe un pain point o bug con el que te hayas encontrado y como lo solucionaste
