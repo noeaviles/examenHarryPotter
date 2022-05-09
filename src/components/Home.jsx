@@ -131,7 +131,7 @@ const handleSubmit = (e)=>{
         <Header handleModal={activarModal}/>
         <Filtro handlefilterStudens={filterStudens} handlefilterStaff={filterStaff} bntActiveStudens={bntActiveStudens} bntActiveStaff={bntActiveStaff}/>
         {data.length > 0 && <ContentCards data={data}/>}
-        {data.length === 0 && 'Tenemos fallos de conexión recuerda levantar JSONServer'}
+        {data.length === 0 && <div className='warning'>"Tenemos fallos de conexión recuerda levantar JSONSERVER"</div>}
     </div>
   )
 }
