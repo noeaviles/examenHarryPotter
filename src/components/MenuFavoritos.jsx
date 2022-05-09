@@ -14,6 +14,7 @@ const MenuFavoritos = ({favoritos,activeFav,eliminarFavorito}) => {
   return (
     <div className={activeFav ? 'menuFav' : 'hidenFav'}>
         {
+            favoritos.length > 0 ?
             favoritos.map(
                 (item)=>(
                 <div key={item.name}>
@@ -26,7 +27,7 @@ const MenuFavoritos = ({favoritos,activeFav,eliminarFavorito}) => {
                   
                 </div>
                 )
-            )
+            ) : <div className='empty-fav'>Selecciona tus personajes favoritos</div>
         }
     </div>
   )
