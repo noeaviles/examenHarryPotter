@@ -1,6 +1,5 @@
 import React from 'react'
 import iconTrash from '../assests/Trash.png'
-import personaje from '../assests/personaje.png'
 import {connect} from 'react-redux';
 import {eliminarFavorito} from '../redux/actions'
 
