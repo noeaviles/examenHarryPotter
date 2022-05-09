@@ -10,7 +10,7 @@ const mapStateToProps = (state)=>{
     }
 }
 
-const MenuFavoritos = ({favoritos,activeFav}) => {
+const MenuFavoritos = ({favoritos,activeFav,eliminarFavorito}) => {
     
   return (
     <div className={activeFav ? 'menuFav' : 'hidenFav'}>
@@ -22,7 +22,7 @@ const MenuFavoritos = ({favoritos,activeFav}) => {
                     <div className='item-fav'>
                         <div className='fav-img' style={{backgroundImage: `url(${item.image})`}}></div>
                         <span>{item.name}</span>
-                        <div className='btn-trash' onClick={()=>eliminarFavorito(item)}><img src={iconTrash} alt="" /></div>
+                        <div className='btn-trash' onClick={()=>eliminarFavorito(favoritos.filter((fav)=>fav.name !== item.name ))}><img src={iconTrash} alt="" /></div>
                     </div>
                   
                 </div>

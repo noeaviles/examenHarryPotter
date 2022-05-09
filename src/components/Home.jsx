@@ -64,20 +64,17 @@ const getData = ()=>{
 
 const filterStudens = ()=>{
     const filterData = data.filter( element=> element.hogwartsStudent === true);
-    console.log(filterData);
     setData(filterData);
 
     if(bntActiveStudens){
       setBntActiveStudens(false);
     }else{
-      setBntActiveStudens(true)
-      
+      setBntActiveStudens(true);
     }
 }
 
 const filterStaff = ()=>{
   const filterData = data.filter( element=> element.hogwartsStaff === true);
-  console.log(filterData);
   setData(filterData);
   
   if(bntActiveStaff){
@@ -112,6 +109,7 @@ const handleSubmit = (e)=>{
   console.log(form)
   axios.post('http://localhost:5000/personajes',form).then(res => console.log('registrado',res)).catch(err=>console.log(err));
   setActiveModal(false)
+  getData();
 }
 
 

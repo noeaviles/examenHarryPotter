@@ -12,6 +12,11 @@ const mapStateToProps = (state)=>{
 
 const ContentCards = ({data,agregarFavorito,favoritos}) => {
   
+  const handleFav=(item)=>{
+    if(favoritos.length < 5){
+      agregarFavorito(item)
+    }
+  }
   return (
     <div className='cards'>
     
@@ -35,7 +40,7 @@ const ContentCards = ({data,agregarFavorito,favoritos}) => {
                     <span className='vivo'>{item.alive ? "VIVO" : "FINADO"}/</span>
                     <span className='rol'>{item.hogwartsStudent ? "ESTUDIANTE" : "STAFF"}</span>
                   </div>
-                  <div className="flag-fav" onClick={()=>agregarFavorito(item)}>
+                  <div className="flag-fav" onClick={()=>handleFav(item)}>
                     <img src={fav ? flagImgBlack :flagImg} alt="" />
                   </div>
                 </div>

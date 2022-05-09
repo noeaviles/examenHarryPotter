@@ -12,9 +12,8 @@ export default (state=initialState,action) => {
             } 
         }
         case "DELETE_FAVORITOS":{
-            //const nuevoState = state.filter( state.name !== action.payload.name)
             return {  
-                 ...state, favorito:{name:"Noe"}
+                 ...state, favoritos:action.payload
                 
              } 
          }

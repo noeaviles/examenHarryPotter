@@ -15,7 +15,7 @@
         display: flex;
         justify-content: center;
         width: 100%;
-        gap:117px;
+        gap:10px;
         margin-top: 24px;
         
     }
@@ -23,6 +23,12 @@
 
 @include breakpoint(medium) {
     .filtro{
-        
+        .buttons-filter{
+            gap:117px;
+            .btn-filter-normal{
+                width: 288px;
+                height: 67px;
+            }
+        }
     }
 }

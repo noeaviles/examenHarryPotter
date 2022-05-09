@@ -551,25 +551,14 @@
       "image": "http://hp-api.herokuapp.com/images/filch.jpg"
     },
     {
-      "id": 0.2909094408433339,
+      "id": 0.4651678814328415,
       "name": "Noe ",
-      "dateOfBirth": "10/02/93",
-      "eyeColour": "Cafe",
-      "hairColour": "Negro",
-      "gender": "male",
-      "hogwartsStudent": "studen",
-      "hogwartsStaff": "",
-      "alive": true
-    },
-    {
-      "id": 0.5170886007122448,
-      "name": "Jacky",
-      "dateOfBirth": "165465",
-      "eyeColour": "654654",
-      "hairColour": "654654",
-      "gender": "female",
+      "dateOfBirth": "A",
+      "eyeColour": "",
+      "hairColour": "",
+      "gender": "",
       "hogwartsStudent": "",
-      "hogwartsStaff": "staff",
+      "hogwartsStaff": "",
       "alive": true,
       "image": ""
     }

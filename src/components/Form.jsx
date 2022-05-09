@@ -47,7 +47,7 @@ function Form({handleChange,handleSubmit}) {
       </div>
      
       
-      <label className='file'>FOTOGRAFIA:<input type="file" /></label>
+      <label className='file'>FOTOGRAFIA:<input type="file" ref={React.createRef()}/></label>
 
       <input className='btn-form' type="submit" value="Guardar"/>
       
