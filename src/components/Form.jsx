@@ -1,35 +1,37 @@
-import React from 'react'
+import React,{useState} from 'react'
 
-function Form() {
+function Form({handleChange,handleSubmit}) {
+  
+
   return (
-  <form action="">
+  <form onSubmit={handleSubmit}>
       <div className="form-inputs">
 
             <div className='input-info'>
               <label htmlFor="name">NOMBRE</label>
-              <input type="text" name="name" className='inputs'/>
+              <input type="text" name="name" className='inputs' onChange={handleChange}/>
             </div>
 
             <div className='input-info'>  
-              <label htmlFor="birthday">CUMPLEAÑOS</label>
-              <input type="text" name="birthday" className='inputs' required/>
+              <label htmlFor="dateOfBirth">CUMPLEAÑOS</label>
+              <input type="text" name="dateOfBirth" className='inputs' onChange={handleChange} required/>
             </div>
 
             <div className='input-info'>  
-              <label htmlFor="eyes">COLOR DE OJOS</label>
-              <input type="text" name="eyes" className='inputs'/>
+              <label htmlFor="eyeColour">COLOR DE OJOS</label>
+              <input type="text" name="eyeColour" className='inputs' onChange={handleChange}/>
             </div>
 
             <div className='input-info'>  
-            <label htmlFor="hair">COLOR DE PELO</label>
-            <input type="text" name="hair" className='inputs'/>
+            <label htmlFor="hairColour">COLOR DE PELO</label>
+            <input type="text" name="hairColour" className='inputs' onChange={handleChange}/>
             </div>
             
             <div className='radio'>
                 <label htmlFor="">GÉNERO</label>
                 <div className="radios">
-                  <input type="radio" name="genero" value="female" /><span>Mujer</span>
-                  <input type="radio" name="genero" value="male"/><span>Hombre</span>
+                  <input type="radio" name="gender" value="female" onChange={handleChange} /><span>Mujer</span>
+                  <input type="radio" name="gender" value="male" onChange={handleChange}/><span>Hombre</span>
                 </div>
             </div>
         
@@ -37,8 +39,8 @@ function Form() {
             <div className='radio'>
                 <label htmlFor="">POSICIÓN</label>
                 <div className="radios">
-                  <input type="radio" name="posicion" value="studen"/><span>Estudiante</span>  
-                  <input type="radio" name="posicion" value="staff"/><span>Staff</span> 
+                  <input type="radio" name="hogwartsStudent" value="studen" onChange={handleChange}/><span>Estudiante</span>  
+                  <input type="radio" name="hogwartsStaff" value="staff" onChange={handleChange}/><span>Staff</span> 
                 </div>
             </div>
         
@@ -47,9 +49,8 @@ function Form() {
       
       <label className='file'>FOTOGRAFIA:<input type="file" /></label>
 
-      <div className='btn-form'>
-        <span>GUARDAR</span>
-      </div>
+      <input className='btn-form' type="submit" value="Guardar"/>
+      
   </form>
   )
 }

@@ -1,9 +1,9 @@
 import React from 'react'
 import icono from '../assests/flag.png'
 
-const BtnFavoritos = () => {
+const BtnFavoritos = ({handleActive}) => {
   return (
-    <div className='btn-header btn-fav'><span>Favoritos</span><img src={icono} alt="" /></div>
+    <div className='btn-header btn-fav' onClick={handleActive}><span>Favoritos</span><img src={icono} alt="" /></div>
   )
 }
 

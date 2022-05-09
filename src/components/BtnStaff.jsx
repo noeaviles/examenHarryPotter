@@ -1,8 +1,8 @@
 import React from 'react'
 
-const BtnStaff = () => {
+const BtnStaff = ({handlefilterStaff,bntActiveStaff}) => {
   return (
-    <div className='btn-filter-normal'>
+    <div className={bntActiveStaff ? 'btn-filter-active ' : 'btn-filter-normal '} onClick={handlefilterStaff}>
         <span>STAFF</span>
     </div>
   )

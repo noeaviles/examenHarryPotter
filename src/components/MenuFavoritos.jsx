@@ -1,43 +1,36 @@
 import React from 'react'
 import iconTrash from '../assests/Trash.png'
 import personaje from '../assests/personaje.png'
-const MenuFavoritos = () => {
+import {connect} from 'react-redux';
+import {eliminarFavorito} from '../redux/actions'
+
+const mapStateToProps = (state)=>{
+    return {
+        favoritos: state.reducerFavoritos.favoritos,
+    }
+}
+
+const MenuFavoritos = ({favoritos,activeFav}) => {
+    
   return (
-    <div className='menuFav'>
-        <div>
-            <div className='item-fav'>
-                <img src={personaje} alt="" />
-                <span>Luna Lovegood</span>
-                <div className='btn-trash'><img src={iconTrash} alt="" /></div>
-            </div>
-            <hr />
-        </div>
-        <div className='item-fav'>
-            <img src={personaje} alt="" />
-            <span>Harry Potter</span>
-            <div className='btn-trash'><img src={iconTrash} alt="" /></div>
-        </div>
-        <hr />
-        <div className='item-fav'>
-            <img src={personaje} alt="" />
-            <span>Luna Lovegood</span>
-            <div className='btn-trash'><img src={iconTrash} alt="" /></div>
-        </div>
-        <hr />
-        <div className='item-fav'>
-            <img src={personaje} alt="" />
-            <span>Harry Potter</span>
-            <div className='btn-trash'><img src={iconTrash} alt="" /></div>
-        </div>
-        <hr />
-        <div className='item-fav'>
-            <img src={personaje} alt="" />
-            <span>Harry Potter</span>
-            <div className='btn-trash'><img src={iconTrash} alt="" /></div>
-        </div>
-        <hr />
+    <div className={activeFav ? 'menuFav' : 'hidenFav'}>
+        {
+            favoritos.map(
+                (item)=>(
+                <div key={item.name}>
+                    <hr />
+                    <div className='item-fav'>
+                        <div className='fav-img' style={{backgroundImage: `url(${item.image})`}}></div>
+                        <span>{item.name}</span>
+                        <div className='btn-trash' onClick={()=>eliminarFavorito(item)}><img src={iconTrash} alt="" /></div>
+                    </div>
+                  
+                </div>
+                )
+            )
+        }
     </div>
   )
 }
 
-export default MenuFavoritos
+export default connect(mapStateToProps,{eliminarFavorito})(MenuFavoritos)

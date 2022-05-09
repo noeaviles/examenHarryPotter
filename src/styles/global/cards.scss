@@ -4,6 +4,7 @@
     justify-content: space-evenly;
     padding: 5px;
     width: 80%;
+    gap:12px ;
     .Slytherin{
         background: $color-slytherin;
     }
@@ -21,6 +22,7 @@
     .house{
         background-color: rgb(182, 187, 187);
     }
+    
     .card {
         background-color: $color-white;
         width: 180px;
@@ -34,11 +36,14 @@
             padding: 10px;
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
-            img {
-                border-radius: 8rem;
-                width: 95px;
-                height: 96.31px;
+            .personaje{
+                width: 90px;
+                height: 90px;
+                border-radius: 50px;
+                background-repeat: no-repeat;
+                background-size: cover;
             }
+            
         }
         .info-card {
             width: 100%;
@@ -61,15 +66,22 @@
                     font-style: normal;
                     
                 }
-                .flag-fav {}
+                .flag-fav {
+                    cursor: pointer;
+                }
+            }
+            .finado-text{
+                padding-right: 5px;
             }
             .name-card {
+                width: 100%;
                 font-style: normal;
                 font-weight: 600;
                 font-size: 18px;
                 line-height: 46px;
                 text-align: center;
                 color: #081F32;
+                
             }
             .info-personaje{
                 display: none;
@@ -77,11 +89,15 @@
 
         }
     }
+    .finado{
+        background-color: #CCCCCC;
+    }
 }
 
 @include breakpoint(medium) {
     .cards {
         padding: 50px;
+        gap:51px;
         .card {
          display: flex;
          width: 515px;
@@ -91,9 +107,10 @@
                 border-bottom-left-radius: 10px;
                 border-top-right-radius: 0;
                 align-items: center;
-                img {
-                    width: 165px;
-                    height: 165px;
+                .personaje {
+                    width: 180px;
+                    height: 180px;
+                    border-radius: 100px;
                 }
             }
             .info-card {
@@ -112,7 +129,7 @@
                     .flag-fav {}
                 }
                 .name-card {
-                    font-size: 30px;
+                    font-size: 26px;
                     line-height: 46px;
                     text-align: left;
                     width: 100%;
@@ -127,6 +144,9 @@
                         
                         font-size: 14px;
                         line-height: 27px;
+                        h3{
+                            padding-right: 5px;
+                        }
                     }
                 }
     
