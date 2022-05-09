@@ -39,8 +39,8 @@ function Form({handleChange,handleSubmit}) {
             <div className='radio'>
                 <label htmlFor="">POSICIÓN</label>
                 <div className="radios">
-                  <input type="radio" name="hogwartsStudent" value="studen" onChange={handleChange}/><span>Estudiante</span>  
-                  <input type="radio" name="hogwartsStaff" value="staff" onChange={handleChange}/><span>Staff</span> 
+                  <input type="radio" name="typeHogwarts" value="studen" onChange={handleChange}/><span>Estudiante</span>  
+                  <input type="radio" name="typeHogwarts" value="staff" onChange={handleChange}/><span>Staff</span> 
                 </div>
             </div>
         

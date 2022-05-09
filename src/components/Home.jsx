@@ -97,9 +97,21 @@ const activarModal = ()=>{
 
 const handleChange = (e)=>{
   const {name,value} = e.target;
-    setForm({
-      ...form,[name]:value
-    });
+    if(name === "typeHogwarts"){
+      if (value === "studen"){
+        setForm({
+          ...form,"hogwartsStudent":true,"hogwartsStaff":false
+        })
+      }else{
+        setForm({
+          ...form,"hogwartsStudent":false,"hogwartsStaff":true
+        })
+      }
+    }else{
+      setForm({
+        ...form,[name]:value
+      });
+  }
 }
 
 const handleSubmit = (e)=>{

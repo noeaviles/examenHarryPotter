@@ -585,6 +585,42 @@
       "hogwartsStaff": "staff",
       "alive": true,
       "image": ""
+    },
+    {
+      "id": 0.12850165260673685,
+      "name": "aklsdmkas",
+      "dateOfBirth": "smñkfmdskñ",
+      "eyeColour": "smdfñlsmd",
+      "hairColour": "sdkmsdl",
+      "gender": "male",
+      "hogwartsStudent": "studen",
+      "hogwartsStaff": "staff",
+      "alive": true,
+      "image": ""
+    },
+    {
+      "id": 0.1941521748046111,
+      "name": "sfsdf",
+      "dateOfBirth": "sfdsdf",
+      "eyeColour": "sdfsdf",
+      "hairColour": "sdfsdf",
+      "gender": "male",
+      "hogwartsStudent": "",
+      "hogwartsStaff": "",
+      "alive": true,
+      "image": ""
+    },
+    {
+      "id": 0.07516718274101608,
+      "name": "asdasd",
+      "dateOfBirth": "fgswd",
+      "eyeColour": "dsfsdf",
+      "hairColour": "dsfdsf",
+      "gender": "male",
+      "hogwartsStudent": false,
+      "hogwartsStaff": true,
+      "alive": true,
+      "image": ""
     }
   ]
 }
