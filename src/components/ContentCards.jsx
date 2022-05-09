@@ -19,14 +19,9 @@ const ContentCards = ({data,agregarFavorito,favoritos}) => {
   }
   return (
     <div className='cards'>
-    
-      
       {
-        data.map( (item)=>{
-          
+        data.map((item)=>{
          const fav =  favoritos.find(el => el.name === item.name)
-         
-
           return (
             <div className={item.alive ? "card" : "card finado"} key={item.id || item.actor}>
               

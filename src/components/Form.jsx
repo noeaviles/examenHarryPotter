@@ -9,7 +9,7 @@ function Form({handleChange,handleSubmit}) {
 
             <div className='input-info'>
               <label htmlFor="name">NOMBRE</label>
-              <input type="text" name="name" className='inputs' onChange={handleChange}/>
+              <input type="text" name="name" className='inputs' onChange={handleChange} required/>
             </div>
 
             <div className='input-info'>  
@@ -19,12 +19,12 @@ function Form({handleChange,handleSubmit}) {
 
             <div className='input-info'>  
               <label htmlFor="eyeColour">COLOR DE OJOS</label>
-              <input type="text" name="eyeColour" className='inputs' onChange={handleChange}/>
+              <input type="text" name="eyeColour" className='inputs' onChange={handleChange} required/>
             </div>
 
             <div className='input-info'>  
             <label htmlFor="hairColour">COLOR DE PELO</label>
-            <input type="text" name="hairColour" className='inputs' onChange={handleChange}/>
+            <input type="text" name="hairColour" className='inputs' onChange={handleChange} required/>
             </div>
             
             <div className='radio'>

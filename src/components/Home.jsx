@@ -25,26 +25,14 @@ const Home = () => {
   const [bntActiveStaff, setBntActiveStaff] = useState(false);
   const [activeModal, setActiveModal] = useState(false);
   const [form,setForm] = useState(initialForm)
-
+  const [dataOrigen,setDataOrigen] = useState([])
 
   useEffect(() => {
     getData();
   }, []);
   
 
-  useEffect(() => {
-    if(!bntActiveStaff){
-      getData();
-    }
-    
-  }, [bntActiveStaff]);
 
-
-  useEffect(() => {
-    if(!bntActiveStudens){
-      getData();
-    }
-  }, [bntActiveStudens]);
 
 
 
@@ -54,6 +42,7 @@ const getData = ()=>{
   })
     .then((response) => {
       setData(response.data);
+      setDataOrigen(response.data);
     })
     .catch((error) => {
       console.log(error);
@@ -63,24 +52,36 @@ const getData = ()=>{
 
 
 const filterStudens = ()=>{
-    const filterData = data.filter( element=> element.hogwartsStudent === true);
-    setData(filterData);
-
+  
     if(bntActiveStudens){
       setBntActiveStudens(false);
+      setData(dataOrigen);
     }else{
       setBntActiveStudens(true);
+      const filterData = dataOrigen.filter( element=> element.hogwartsStudent === true);
+      setData(filterData);
+      if(bntActiveStaff){
+        setBntActiveStaff(false);
+      }
+
+    
     }
 }
 
 const filterStaff = ()=>{
-  const filterData = data.filter( element=> element.hogwartsStaff === true);
-  setData(filterData);
   
   if(bntActiveStaff){
     setBntActiveStaff(false);
+    setData(dataOrigen);
   }else{
-    setBntActiveStaff(true)
+    setBntActiveStaff(true);
+    if(bntActiveStudens){
+      setBntActiveStudens(false);
+    }
+    const filterData = dataOrigen.filter( element=> element.hogwartsStaff === true);
+    setData(filterData);
+   
+    
     
   }
 
@@ -91,13 +92,11 @@ const activarModal = ()=>{
     setActiveModal(true)
   }else{
     setActiveModal(false)
-    console.log(activeModal);
   }
 }
 
 const handleChange = (e)=>{
   const {name,value} = e.target;
-  console.log(name,value)
     setForm({
       ...form,[name]:value
     });
@@ -105,14 +104,13 @@ const handleChange = (e)=>{
 
 const handleSubmit = (e)=>{
   e.preventDefault();
-  console.log("Enviando")
-  console.log(form)
+
   axios.post('http://localhost:5000/personajes',form).then(res => console.log('registrado',res)).catch(err=>console.log(err));
   setActiveModal(false)
   getData();
+  setBntActiveStaff(false);
+  setBntActiveStudens(false);
 }
-
-
 
   return (
     <div className='home'>
@@ -120,7 +118,8 @@ const handleSubmit = (e)=>{
         <Modal activeModal={activeModal} handleModal={activarModal} handleChange={handleChange} handleSubmit={handleSubmit}/>
         <Header handleModal={activarModal}/>
         <Filtro handlefilterStudens={filterStudens} handlefilterStaff={filterStaff} bntActiveStudens={bntActiveStudens} bntActiveStaff={bntActiveStaff}/>
-        <ContentCards data={data}/>
+        {data.length > 0 && <ContentCards data={data}/>}
+        {data.length === 0 && 'Tenemos fallos de conexión recuerda levantar JSONServer'}
     </div>
   )
 }
