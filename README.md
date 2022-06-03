@@ -1,5 +1,8 @@
 # Prueba de Ingreso Front Developer Aeroméxico
-
+## Se realizaron los cambios solicitados
+Los componentes Home Y Modal fueron los que se cambiaron a clases.
+De igual forma revise la ruta de las imagenes que me comentaron no se veían, las estoy consumiendo desde la API http://hp-api.herokuapp.com/images/.
+Quedo a la orden ante cualquier otra observación.
 ## Instrucciones para levantar proyecto
 El proyecto fue creado con:
 ### `Yarn create-app`
