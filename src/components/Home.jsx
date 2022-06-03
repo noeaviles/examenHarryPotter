@@ -1,139 +1,172 @@
-import React,{useEffect,useState} from 'react'
+import React from 'react'
 import ContentCards from './ContentCards'
 import Filtro from './Filtro'
 import Header from './Header'
 import Modal from './Modal'
 import axios from 'axios'
 
-const Home = () => {
- 
-  const initialForm = {
-    id: Math.random(),
-    name:"",
-    dateOfBirth:"",
-    eyeColour:"",
-    hairColour:"",
-    gender:"",
-    hogwartsStudent:"",
-    hogwartsStaff:"",   
-    alive:true ,
-    image:""
+
+class Home extends React.Component{
+
+  constructor() {
+    super();
+    this.state = {
+      dataOrigen:[],
+      data:[],
+      bntActiveStudens:false,
+      bntActiveStaff:false,
+      activeModal:false,
+      form:{
+        id: Math.random(),
+        name:"",
+        dateOfBirth:"",
+        eyeColour:"",
+        hairColour:"",
+        gender:"",
+        hogwartsStudent:"",
+        hogwartsStaff:"",   
+        alive:true ,
+        image:""
+      },
+    }
   }
 
-  const [data, setData] = useState([]);
-  const [bntActiveStudens, setBntActiveStudens] = useState(false);
-  const [bntActiveStaff, setBntActiveStaff] = useState(false);
-  const [activeModal, setActiveModal] = useState(false);
-  const [form,setForm] = useState(initialForm)
-  const [dataOrigen,setDataOrigen] = useState([])
-
-  useEffect(() => {
-    getData();
-  }, []);
-  
-
-
-
-
-
-const getData = ()=>{
-  axios({
-    url: "http://localhost:5000/personajes",
-  })
-    .then((response) => {
-      setData(response.data);
-      setDataOrigen(response.data);
-    })
-    .catch((error) => {
-      console.log(error);
-    });  
-}
-
-
-
-const filterStudens = ()=>{
-  
-    if(bntActiveStudens){
-      setBntActiveStudens(false);
-      setData(dataOrigen);
-    }else{
-      setBntActiveStudens(true);
-      const filterData = dataOrigen.filter( element=> element.hogwartsStudent === true);
-      setData(filterData);
-      if(bntActiveStaff){
-        setBntActiveStaff(false);
-      }
-
-    
-    }
-}
-
-const filterStaff = ()=>{
-  
-  if(bntActiveStaff){
-    setBntActiveStaff(false);
-    setData(dataOrigen);
-  }else{
-    setBntActiveStaff(true);
-    if(bntActiveStudens){
-      setBntActiveStudens(false);
-    }
-    const filterData = dataOrigen.filter( element=> element.hogwartsStaff === true);
-    setData(filterData);
+  componentDidMount() {
+    this.getData();
+  }
    
-    
-    
-  }
 
-}
-
-const activarModal = ()=>{
-  if(!activeModal){
-    setActiveModal(true)
-  }else{
-    setActiveModal(false)
-  }
-}
-
-const handleChange = (e)=>{
-  const {name,value} = e.target;
-    if(name === "typeHogwarts"){
-      if (value === "studen"){
-        setForm({
-          ...form,"hogwartsStudent":true,"hogwartsStaff":false
+  getData = () => {
+    axios({
+      url: "http://localhost:5000/personajes",
+    })
+      .then((response) => {
+        this.setState({
+          dataOrigen:response.data,
+          data:response.data,
         })
+      })
+      .catch((error) => {
+        console.log(error);
+      });  
+  }
+
+
+
+  filterStudens = () => {
+    
+      if(this.state.bntActiveStudens){
+        this.setState({
+          data:this.state.dataOrigen,
+          bntActiveStudens:false,
+        });
+  
       }else{
-        setForm({
-          ...form,"hogwartsStudent":false,"hogwartsStaff":true
+        const { dataOrigen } = this.state
+        const filterData = dataOrigen.filter( element=> element.hogwartsStudent === true);
+        this.setState({
+          bntActiveStudens:true,
+          data:filterData,     
+        })
+
+        if(this.state.bntActiveStaff){
+          this.setState({
+            bntActiveStaff:false,
+          })
+        }
+
+      }
+  }
+
+  filterStaff = () => {
+    
+    if(this.state.bntActiveStaff){
+
+      this.setState({
+        bntActiveStaff:false,
+        data:this.state.dataOrigen,
+      })
+
+    }else{
+
+      const { dataOrigen } = this.state
+      const filterData = dataOrigen.filter( element=> element.hogwartsStaff === true)
+      this.setState({
+        bntActiveStaff:true,
+        data:filterData,
+      })
+
+      if(this.state.bntActiveStudens){
+        this.setState({
+          bntActiveStudens:false,
         })
       }
-    }else{
-      setForm({
-        ...form,[name]:value
-      });
+      
+    }
+
   }
-}
 
-const handleSubmit = (e)=>{
-  e.preventDefault();
+   activarModal = () => {
+    if(!this.state.activeModal){
+      this.setState({
+        activeModal:true,
+      })
+    }else{
+      this.setState({
+        activeModal:false,
+      })
+    }
+  }
 
-  axios.post('http://localhost:5000/personajes',form).then(res => console.log('registrado',res)).catch(err=>console.log(err));
-  setActiveModal(false)
-  getData();
-  setBntActiveStaff(false);
-  setBntActiveStudens(false);
-}
+   handleChange = (e) => {
+    const {name,value} = e.target;
+      if(name === "typeHogwarts"){
+        if (value === "studen"){
+          this.setState({
+            form: {...this.state.form,"hogwartsStudent":true,"hogwartsStaff":false}
+          })
+        }else{
+          this.setState({
+            form:{...this.state.form,"hogwartsStudent":false,"hogwartsStaff":true}
+          })
+        }
+      }else{
+        this.setState({
+          form:{...this.state.form,[name]:value}
+        })
+    }
+  }
 
+   handleSubmit = (e) => {
+    e.preventDefault();
+
+    axios.post('http://localhost:5000/personajes',this.state.form).then(res => console.log('registrado',res)).catch(err=>console.log(err));
+    this.setState({
+      activeModal:false,
+    })
+    this.getData();
+    this.setState({
+      bntActiveStaff:false,
+      bntActiveStudens:false,
+    })
+  }
+
+render() {
   return (
     <div className='home'>
       <div className='img-fondo'></div>
-        <Modal activeModal={activeModal} handleModal={activarModal} handleChange={handleChange} handleSubmit={handleSubmit}/>
-        <Header handleModal={activarModal}/>
-        <Filtro handlefilterStudens={filterStudens} handlefilterStaff={filterStaff} bntActiveStudens={bntActiveStudens} bntActiveStaff={bntActiveStaff}/>
-        {data.length > 0 && <ContentCards data={data}/>}
-        {data.length === 0 && <div className='warning'>"Tenemos fallos de conexión recuerda levantar JSONSERVER"</div>}
+        <Modal activeModal={this.state.activeModal} handleModal={this.activarModal} handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>
+        <Header handleModal={this.activarModal}/>
+        <Filtro handlefilterStudens={this.filterStudens} handlefilterStaff={this.filterStaff} bntActiveStudens={this.state.bntActiveStudens} bntActiveStaff={this.state.bntActiveStaff}/>
+        {this.state.data.length > 0 && <ContentCards data={this.state.data}/>}
+        {this.state.data.length === 0 && <div className='warning'>"Tenemos fallos de conexión recuerda levantar JSONSERVER"</div>}
     </div>
   )
 }
 
-export default Home
+
+}
+
+
+export default Home;
+
